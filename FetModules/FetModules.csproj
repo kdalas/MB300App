@@ -1,0 +1,721 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5B207B64-FEA2-4A42-A6E3-074BE4A154BB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>FetComDriver</RootNamespace>
+    <AssemblyName>FetComDriver</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MathNet.Numerics, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.5.0.0\lib\net461\MathNet.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.5.6\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.3.1.0\lib\net20\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK.GLControl, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.GLControl.3.1.0\lib\net20\OpenTK.GLControl.dll</HintPath>
+    </Reference>
+    <Reference Include="ScottPlot, Version=5.0.27.0, Culture=neutral, PublicKeyToken=86698dc10387c39e, processorArchitecture=MSIL">
+      <HintPath>..\packages\ScottPlot.5.0.27\lib\net462\ScottPlot.dll</HintPath>
+    </Reference>
+    <Reference Include="ScottPlot.WinForms, Version=5.0.27.0, Culture=neutral, PublicKeyToken=86698dc10387c39e, processorArchitecture=MSIL">
+      <HintPath>..\packages\ScottPlot.WinForms.5.0.27\lib\net462\ScottPlot.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp, Version=2.88.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.2.88.8\lib\net462\SkiaSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Desktop.Common, Version=2.88.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.Views.Desktop.Common.2.88.8\lib\net462\SkiaSharp.Views.Desktop.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.WindowsForms, Version=2.88.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.Views.WindowsForms.2.88.8\lib\net462\SkiaSharp.Views.WindowsForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.4.7.3\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FetModules.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FetModules.Designer.cs">
+      <DependentUpon>FetModules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BaseControl.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\BaseControl.Designer.cs">
+      <DependentUpon>BaseControl.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\DAC100\DAC100.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\DAC100\DAC100.Designer.cs">
+      <DependentUpon>DAC100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\DAC100\DAC100Base.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\DAC100\DAC100Base.Designer.cs">
+      <DependentUpon>DAC100Base.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\FET101\DAC101.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\FET101\DAC101.Designer.cs" />
+    <Compile Include="Modules\FET101\DAC101Base.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\FET101\DAC101Base.Designer.cs" />
+    <Compile Include="Modules\FETMMB100\FetMmb100.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\FETMMB100\FetMmb100.Designer.cs">
+      <DependentUpon>FetMmb100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FETMMB100\FetMmb100Base.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\FETMMB100\FetMmb100Base.Designer.cs">
+      <DependentUpon>FetMmb100Base.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\Fwu\Fwu.cs" />
+    <Compile Include="Modules\ADC100\Adc100exe.cs" />
+    <Compile Include="Modules\ADC100\Adc100.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\ADC100\Adc100.Designer.cs">
+      <DependentUpon>Adc100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\ADC100\Adc100Base.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\ADC100\Adc100Base.Designer.cs">
+      <DependentUpon>Adc100Base.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\GM100\GalvoMonitor.cs" />
+    <Compile Include="Modules\GM100\Gm100.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\GM100\Gm100.Designer.cs">
+      <DependentUpon>Gm100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\GM100\Gm100Base.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\GM100\Gm100Base.Designer.cs">
+      <DependentUpon>Gm100Base.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\IModules.cs" />
+    <Compile Include="Modules\LD100\LaserDriver.cs" />
+    <Compile Include="Modules\LD100\Ld100.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\LD100\Ld100.Designer.cs">
+      <DependentUpon>Ld100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\LD100\Pb100aBase.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\LD100\Pb100aBase.Designer.cs">
+      <DependentUpon>Pb100aBase.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\HSLO100\Hslo100.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\HSLO100\Hslo100.Designer.cs">
+      <DependentUpon>Hslo100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HSLO100\Hslo100Base.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\HSLO100\Hslo100Base.Designer.cs">
+      <DependentUpon>Hslo100Base.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\HSLO100\Hslo100Driver.cs" />
+    <Compile Include="Modules\LD200\LaserDriver_LD200.cs" />
+    <Compile Include="Modules\LD200\Ld200.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\LD200\Ld200.Designer.cs">
+      <DependentUpon>Ld200.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\LD200\Ld200Base.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\LD200\Ld200Base.Designer.cs">
+      <DependentUpon>Ld200Base.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\LED201\Led201.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\LED201\Led201.Designer.cs">
+      <DependentUpon>Led201.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\LED201\Led201Base.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\LED201\Led201Base.Designer.cs">
+      <DependentUpon>Led201Base.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\LED201\Leddriver.cs" />
+    <Compile Include="Modules\LED200\Led200.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\LED200\Led200.Designer.cs">
+      <DependentUpon>Led200.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\LED200\Led200Base.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\LED200\Led200Base.Designer.cs">
+      <DependentUpon>Led200Base.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\LED200\Leddriver.cs" />
+    <Compile Include="Modules\LED100\Led100.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\LED100\Led100.Designer.cs">
+      <DependentUpon>Led100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\LED100\Leddriver.cs" />
+    <Compile Include="Modules\LED100\Led100Base.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\LED100\Led100Base.Designer.cs">
+      <DependentUpon>Led100Base.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\LTR100\LTR100.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\LTR100\LTR100.Designer.cs">
+      <DependentUpon>LTR100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\LTR100\LTR100aBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\LTR100\LTR100aBase.Designer.cs">
+      <DependentUpon>LTR100aBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\LTR100\LTRDriver.cs" />
+    <Compile Include="Modules\MB200\MB200.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\MB200\MB200.Designer.cs">
+      <DependentUpon>MB200.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\MB200\MB200Base.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\MB200\MB200Base.Designer.cs">
+      <DependentUpon>MB200Base.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\MM100\Mm100.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\MM100\Mm100.Designer.cs">
+      <DependentUpon>Mm100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\MM100\Mm100Base.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\MM100\Mm100Base.Designer.cs" />
+    <Compile Include="Modules\MM100\MemsMonitor.cs" />
+    <Compile Include="Modules\SMD100\Smd100.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\SMD100\Smd100.Designer.cs">
+      <DependentUpon>Smd100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SMD100\Smd100Base.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\SMD100\Smd100Base.Designer.cs">
+      <DependentUpon>Smd100Base.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\SMD100\StepperMotorDriver.cs" />
+    <Compile Include="Modules\SMD100\Tmc2660Driver.cs" />
+    <Compile Include="Modules\MD100\Multidriver.cs" />
+    <Compile Include="Modules\MD100\Md100Base.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\MD100\Md100Base.Designer.cs">
+      <DependentUpon>Md100Base.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\MD100\Tmc2660Driver.cs" />
+    <Compile Include="Modules\MD100\Md100.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\MD100\Md100.Designer.cs">
+      <DependentUpon>Md100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\MEMS200\Mems200.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\MEMS200\Mems200.Designer.cs">
+      <DependentUpon>Mems200.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\MEMS200\Mems200Base.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\MEMS200\Mems200Base.Designer.cs">
+      <DependentUpon>Mems200Base.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\MEMS100\Mems100.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\MEMS100\Mems100.Designer.cs">
+      <DependentUpon>Mems100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\MEMS100\Mems100Base.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\MEMS100\Mems100Base.Designer.cs">
+      <DependentUpon>Mems100Base.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\OCT100\Oct100.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\OCT100\Oct100.Designer.cs">
+      <DependentUpon>Oct100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\OCT100\Oct100Base.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\OCT100\Oct100Base.Designer.cs">
+      <DependentUpon>Oct100Base.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\OLED100\Oled100.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\OLED100\Oled100.Designer.cs">
+      <DependentUpon>Oled100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\PB100A\Pb100aBase.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\PB100A\Pb100aBase.Designer.cs">
+      <DependentUpon>Pb100aBase.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\PB100A\Pb100a.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\PB100A\Pb100a.Designer.cs">
+      <DependentUpon>Pb100a.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\PB100A\PowerBoardA.cs" />
+    <Compile Include="Modules\PB100B\Pb100b.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\PB100B\Pb100b.Designer.cs">
+      <DependentUpon>Pb100b.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\PB100B\PowerBoardA.cs" />
+    <Compile Include="Modules\OLED100\Oled100Base.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\OLED100\Oled100Base.Designer.cs">
+      <DependentUpon>Oled100Base.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\PHD100\Phd100.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\PHD100\Phd100.designer.cs">
+      <DependentUpon>Phd100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\PHD100\Phd100Base.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\PHD100\Phd100Base.Designer.cs" />
+    <Compile Include="Modules\PHD100\Photodetector.cs" />
+    <Compile Include="Modules\SLO200\Slo200.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\SLO200\Slo200.Designer.cs">
+      <DependentUpon>Slo200.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SLO200\Slo200Base.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\SLO200\Slo200Base.Designer.cs">
+      <DependentUpon>Slo200Base.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\TG100\TG100.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\TG100\TG100.Designer.cs">
+      <DependentUpon>TG100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\TG100\TrajGenerator.cs" />
+    <Compile Include="Modules\VOA100\Voa100Base.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\VOA100\Voa100Base.Designer.cs">
+      <DependentUpon>Voa100Base.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\VOA100\Voa100.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\VOA100\Voa100.Designer.cs">
+      <DependentUpon>Voa100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Modules\EMPTY100\Empty100.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\EMPTY100\Empty100.Designer.cs">
+      <DependentUpon>Empty100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\EMPTY100\Empty100Base.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\EMPTY100\Empty100Base.Designer.cs">
+      <DependentUpon>Empty100Base.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\FET100\Fet100.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\FET100\Fet100.Designer.cs">
+      <DependentUpon>Fet100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FET100\Fet100Base.cs">
+      <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\FET100\Fet100Base.Designer.cs">
+      <DependentUpon>Fet100Base.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Modules\SLO100\Slo100.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\SLO100\Slo100.Designer.cs">
+      <DependentUpon>Slo100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SLO100\Slo100Base.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\SLO100\Slo100Base.Designer.cs">
+      <DependentUpon>Slo100Base.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="ThreadSafeCalls.cs" />
+    <EmbeddedResource Include="FetModules.resx">
+      <DependentUpon>FetModules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\BaseControl.resx">
+      <DependentUpon>BaseControl.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\DAC100\DAC100.resx">
+      <DependentUpon>DAC100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\ADC100\Adc100.resx">
+      <DependentUpon>Adc100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\FET101\DAC101.resx" />
+    <EmbeddedResource Include="Modules\FETMMB100\FetMmb100.resx">
+      <DependentUpon>FetMmb100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\GM100\Gm100.resx">
+      <DependentUpon>Gm100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\LD100\Ld100.resx">
+      <DependentUpon>Ld100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HSLO100\Hslo100.resx">
+      <DependentUpon>Hslo100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\LD200\Ld200.resx" />
+    <EmbeddedResource Include="Modules\LED201\Led201.resx">
+      <DependentUpon>Led201.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\LED200\Led200.resx">
+      <DependentUpon>Led200.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\LED100\Led100.resx">
+      <DependentUpon>Led100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\LTR100\LTR100.resx" />
+    <EmbeddedResource Include="Modules\MB200\MB200.resx">
+      <DependentUpon>MB200.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\MM100\Mm100.resx">
+      <DependentUpon>Mm100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\SMD100\Smd100.resx">
+      <DependentUpon>Smd100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\MD100\Md100.resx">
+      <DependentUpon>Md100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\MEMS200\Mems200.resx">
+      <DependentUpon>Mems200.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\MEMS100\Mems100.resx">
+      <DependentUpon>Mems100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\OCT100\Oct100.resx">
+      <DependentUpon>Oct100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\OLED100\Oled100.resx">
+      <DependentUpon>Oled100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\PB100A\Pb100a.resx">
+      <DependentUpon>Pb100a.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\PB100B\Pb100b.resx">
+      <DependentUpon>Pb100b.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\PHD100\Phd100.resx">
+      <DependentUpon>Phd100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\SLO200\Slo200.resx">
+      <DependentUpon>Slo200.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\TG100\TG100.resx">
+      <DependentUpon>TG100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\VOA100\Voa100.resx">
+      <DependentUpon>Voa100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Modules\EMPTY100\Empty100.resx">
+      <DependentUpon>Empty100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\FET100\Fet100.resx">
+      <DependentUpon>Fet100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\SLO100\Slo100.resx">
+      <DependentUpon>Slo100.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="OpenTK.dll.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GenQueue\GenQueue.vcxproj">
+      <Project>{8f5ee183-60a2-4df1-b9a4-a0a67c293317}</Project>
+      <Name>GenQueue</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\USB2\USB2.vcxproj">
+      <Project>{d3f03b38-140c-4b58-9a1e-02b87d471d6d}</Project>
+      <Name>USB2</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\USB3\USB3.vcxproj">
+      <Project>{03be6a44-589d-4325-95ac-f8aa5a39ac6d}</Project>
+      <Name>USB3</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\USB3_2poMb\USB3_2poMb.vcxproj">
+      <Project>{5ad12fd3-fce2-407b-b69d-3a0c1f210e19}</Project>
+      <Name>USB3_2poMb</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\SkiaSharp.NativeAssets.macOS.2.88.8\build\net462\SkiaSharp.NativeAssets.macOS.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.macOS.2.88.8\build\net462\SkiaSharp.NativeAssets.macOS.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Ten projekt zawiera odwołania do pakietów NuGet, których nie ma na tym komputerze. Użyj przywracania pakietów NuGet, aby je pobrać. Aby uzyskać więcej informacji, zobacz http://go.microsoft.com/fwlink/?LinkID=322105. Brakujący plik: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.macOS.2.88.8\build\net462\SkiaSharp.NativeAssets.macOS.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.macOS.2.88.8\build\net462\SkiaSharp.NativeAssets.macOS.targets'))" />
+    <Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.Win32.2.88.8\build\net462\SkiaSharp.NativeAssets.Win32.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.Win32.2.88.8\build\net462\SkiaSharp.NativeAssets.Win32.targets'))" />
+    <Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.Linux.NoDependencies.2.88.8\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.Linux.NoDependencies.2.88.8\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets'))" />
+  </Target>
+  <Import Project="..\packages\SkiaSharp.NativeAssets.Win32.2.88.8\build\net462\SkiaSharp.NativeAssets.Win32.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.Win32.2.88.8\build\net462\SkiaSharp.NativeAssets.Win32.targets')" />
+  <Import Project="..\packages\SkiaSharp.NativeAssets.Linux.NoDependencies.2.88.8\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.Linux.NoDependencies.2.88.8\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets')" />
+</Project>
